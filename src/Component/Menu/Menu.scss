@@ -1,0 +1,17 @@
+.Menu{
+    height: 50px;
+    background-color: beige;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .menu_item{
+        
+        text-decoration: none;
+    }
+    .active_class{
+        color: red;
+        font-weight: bold;
+        
+    }
+}

@@ -1,0 +1,49 @@
+.Orders{
+    display: flex;
+    justify-content: center;
+
+    .order_details{
+        margin: 40px 0;
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 80%;
+    }
+
+    td, th {
+        border: 1px solid black;
+      }
+}
+
+.form {
+    padding: 5vh;
+    border: solid 1px black;
+    // width: 670px;
+    margin: 40px 0;
+
+    h1 {
+      margin-top: 0px;
+      text-align: center;
+    }
+    button {
+      display: flex;
+      margin: auto;
+      font-size: 30px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      background-color: coral;
+      box-shadow: 3px 3px #888888;
+    }
+
+    .cdetails {
+     
+
+      .info {
+      margin: 15px 0px;
+
+
+        .textarea {
+          vertical-align: middle;
+        }
+      }
+    }
+  }

@@ -1,0 +1,40 @@
+.Customer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  .form {
+    padding: 5vh;
+    border: solid 1px black;
+    width: 670px;
+    margin: 40px 0;
+
+    h1 {
+      margin-top: 0px;
+      text-align: center;
+    }
+    button {
+      display: flex;
+      margin: auto;
+      font-size: 30px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      background-color: coral;
+      box-shadow: 3px 3px #888888;
+    }
+
+    .cdetails {
+      width: 100%;
+      display: flex;
+      margin: 15px 0px;
+
+      .info {
+        width: 50%;
+
+        .textarea {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
