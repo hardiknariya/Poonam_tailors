@@ -3,7 +3,7 @@ import "./Customer.scss";
 // import { useSelector, useDispatch } from "react-redux";
 import { addDataItems } from "../../Component/Redux/Actions";
 import { connect } from "react-redux";
-
+import Button from "@material-ui/core/Button";
 class Customer extends Component {
   constructor(props) {
     super(props);
@@ -19,9 +19,9 @@ class Customer extends Component {
       sholder: "",
       waist: "",
       sleve_length: "",
-      sleve_details :'', 
+      sleve_details: "",
       nack_requirement: "",
-      other_details: ""
+      other_details: "",
       // items: [],
     };
 
@@ -54,11 +54,14 @@ class Customer extends Component {
       sleve_length,
       sleve_details,
       nack_requirement,
-      other_details
+      other_details,
     } = this.state;
 
+    const cdata = new Date();
+    const time = cdata.getTime();
+
     const data = {
-      id: new Date(),
+      id: time,
       name,
       mobileNo,
       date,
@@ -71,7 +74,7 @@ class Customer extends Component {
       sleve_length,
       sleve_details,
       nack_requirement,
-      other_details
+      other_details,
     };
 
     this.props.dispatch(addDataItems(data));
@@ -88,9 +91,9 @@ class Customer extends Component {
       sholder: "",
       waist: "",
       sleve_length: "",
-      sleve_details :'', 
+      sleve_details: "",
       nack_requirement: "",
-      other_details: ""
+      other_details: "",
     });
   };
 
@@ -108,7 +111,7 @@ class Customer extends Component {
       sleve_length,
       sleve_details,
       nack_requirement,
-      other_details
+      other_details,
     } = this.state;
     return (
       <div className="Customer">
@@ -248,32 +251,41 @@ class Customer extends Component {
 
               <div className="dress_details info">
                 <label>Sleve Details : </label>
-                <textarea className="sleve_details textarea" name="sleve_details"
+                <textarea
+                  className="sleve_details textarea"
+                  name="sleve_details"
                   value={sleve_details}
-                  onChange={this.handlechange} />
+                  onChange={this.handlechange}
+                />
               </div>
             </div>
 
             <div className="cdetails">
               <div className="dress_details info">
                 <label>Nack Requirement : </label>
-                <textarea className="nack_requirement textarea" name="nack_requirement"
+                <textarea
+                  className="nack_requirement textarea"
+                  name="nack_requirement"
                   value={nack_requirement}
-                  onChange={this.handlechange} />
+                  onChange={this.handlechange}
+                />
               </div>
 
               <div className="dress_details info">
                 <label>other details : </label>
-                <textarea className="other_details textarea" name="other_details"
+                <textarea
+                  className="other_details textarea"
+                  name="other_details"
                   value={other_details}
-                  onChange={this.handlechange} />
+                  onChange={this.handlechange}
+                />
               </div>
             </div>
             <br />
             <br />
 
             {/* <button onClick={this.handleClickAdd}>Submit </button> */}
-            <button>Submit </button>
+            <Button color="primary">Submit</Button>
           </form>
         </div>
       </div>

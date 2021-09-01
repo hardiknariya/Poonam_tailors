@@ -9,36 +9,29 @@ const addDataToStore = (state = initialState, action) => {
     case "DATAADD":
       return {
         ...state,
-        data: [
-          ...state.data,
-          {
-            data: action.payload,
-          },
-        ],
+        data: [...state.data, action.payload],
       };
 
     case "DATA_DELETE":
-      const delet = state.data.filter((data) => 
-        data.data.id !== action.payload
-      );
-      console.log("delete items   " ,delet);
+      const delet = state.data.filter((data) => data.id !== action.payload);
+      console.log("delete items   ", delet);
       return {
         ...state,
-        data: delet ,
+        data: delet,
       };
 
+    case "DATA_UPDATE":
+      const index = state.data.findIndex((o) => o.id === action.payload.id);
+      console.log("asd", index);
 
-      case "DATA_UPDATE":
+      const updateData = [...state.data];
+      updateData[index] = action.payload;
+      console.log("qwqw", updateData);
 
-      console.log("qqq" , action.payload)
-        // const indexU = state.data.findIndex(data => data.data.id === action.data.id)
-        // const updateData = {...state.data , data:state.data[indexU].data}
-        // return {
-        //   ...state.slice(0,indexU), 
-        //   updateData,
-        //   ...state.slice(indexU , 1)
-         
-        // }; 
+      return {
+        ...state,
+        data: updateData,
+      };
 
     default:
       return state;

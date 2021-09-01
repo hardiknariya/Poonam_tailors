@@ -20,7 +20,7 @@ class Order extends Component {
     this.state = {
       openDialog: false,
       items: {
-        id:null,
+        id: null,
         name: "",
         mobileNo: "",
         date: "",
@@ -59,15 +59,14 @@ class Order extends Component {
 
   handleUpdate = (e) => {
     e.preventDefault();
-    console.log("handle updae call", e);
-   
+
     const data = this.state.items;
     console.log(" updated data : ", data);
-    this.props.dispatch(updateDataItems(data));
+    this.props.dispatch(updateDataItems(data), this.handleClose());
 
     this.setState({
       // items,
-      id:null,
+      id: null,
       name: "",
       mobileNo: "",
       date: "",
@@ -89,8 +88,8 @@ class Order extends Component {
     this.setState(
       (prevState) => ({
         items: {
-          ...prevState.items, 
-          [e.target.name]: value, 
+          ...prevState.items,
+          [e.target.name]: value,
         },
       }),
       () => console.log(this.state.items)
@@ -98,28 +97,30 @@ class Order extends Component {
   };
 
   handleClickOpen = (data, id) => {
-    console.log("bla bla bla", data.data);
-    this.setState((prevState) => ({
-      openDialog: true,
+    console.log("bla bla bla", data);
+    this.setState(
+      (prevState) => ({
+        openDialog: true,
 
-      items: {
-        ...prevState.items,
-        id: data.data.id,
-        name: data.data.name,
-        mobileNo: data.data.mobileNo,
-        date: data.data.date,
-        price: data.data.price,
-        mesurment: data.data.mesurment,
-        length: data.data.length,
-        chestSize: data.data.chestSize,
-        sholder: data.data.sholder,
-        waist: data.data.waist,
-        sleve_length: data.data.sleve_length,
-        sleve_details: data.data.sleve_details,
-        nack_requirement: data.data.nack_requirement,
-        other_details: data.data.other_details,
-      },
-    }),() => console.log(this.state.items)
+        items: {
+          ...prevState.items,
+          id: data.id,
+          name: data.name,
+          mobileNo: data.mobileNo,
+          date: data.date,
+          price: data.price,
+          mesurment: data.mesurment,
+          length: data.length,
+          chestSize: data.chestSize,
+          sholder: data.sholder,
+          waist: data.waist,
+          sleve_length: data.sleve_length,
+          sleve_details: data.sleve_details,
+          nack_requirement: data.nack_requirement,
+          other_details: data.other_details,
+        },
+      }),
+      () => console.log("open dialog state items. ", this.state.items)
     );
   };
 
@@ -181,28 +182,26 @@ class Order extends Component {
                       <tr
                         key={i}
                         onDoubleClick={() => {
-                          this.handleClickOpen(data, data.data.id);
+                          this.handleClickOpen(data, data.id);
                         }}
                       >
                         <td>{i + 1}</td>
-                        <td>{data.data.name}</td>
-                        <td>{data.data.mobileNo}</td>
-                        <td>{data.data.date}</td>
-                        <td>{data.data.price}</td>
-                        <td>{data.data.length}</td>
-                        <td>{data.data.chestSize}</td>
-                        <td>{data.data.sholder}</td>
-                        <td>{data.data.waist}</td>
-                        <td>{data.data.sleve_length}</td>
-                        <td>{data.data.mesurment} </td>
+                        <td>{data.name}</td>
+                        <td>{data.mobileNo}</td>
+                        <td>{data.date}</td>
+                        <td>{data.price}</td>
+                        <td>{data.length}</td>
+                        <td>{data.chestSize}</td>
+                        <td>{data.sholder}</td>
+                        <td>{data.waist}</td>
+                        <td>{data.sleve_length}</td>
+                        <td>{data.mesurment} </td>
                         <td>
                           <DeleteForeverOutlinedIcon
                             className="fa fa-plus-circle"
                             style={{ color: "red" }}
                             onClick={() => {
-                              this.props.dispatch(
-                                deleteDataItems(data.data.id)
-                              );
+                              this.props.dispatch(deleteDataItems(data.id));
                             }}
                           />
                         </td>
